@@ -1,0 +1,1164 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Proposta comercial da verttatech para o desenvolvimento do MVP da plataforma de fretes.">
+<meta name="author" content="verttatech">
+
+<!-- Proposta comercial: nao deve aparecer em buscadores -->
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Previa ao compartilhar no WhatsApp, LinkedIn, etc. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="verttatech">
+<meta property="og:title" content="Plataforma de fretes - Proposta de desenvolvimento">
+<meta property="og:description" content="Marketplace de fretes para itens de medio e grande porte. Aplicativo do cliente, aplicativo do entregador e pagamento com repasse automatico.">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary">
+
+<meta name="theme-color" content="#C9A94F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23C9A94F'/%3E%3Cpath d='M6 7l10 18L26 7l-6 0-4 8-4-8z' fill='%2317181A'/%3E%3C/svg%3E">
+<title>Proposta · Plataforma de fretes</title>
+
+<style>
+  /* ============================================================
+     PLATAFORMA DE FRETES · verttatech — proposta comercial
+     Mesmo sistema editorial da proposta TODA.
+     ============================================================ */
+
+  :root {
+    --paper:      #FBFAF6;
+    --card:       #FFFFFF;
+    --card-2:     #F5F2EA;
+    --ink:        #17181A;
+    --ink-2:      #3D3E41;
+    --muted:      #6C6960;
+    --hair:       #E3DDCD;
+    --hair-soft:  #EEE9DD;
+
+    --gold-lt:    #E4CE8C;
+    --gold:       #C9A94F;
+    --gold-dp:    #A8863A;
+    --brand:      #7C6019;
+    --brand-deep: #5E4812;
+    --brand-tint: #F8F2E0;
+
+    --band-bg:    #17181A;
+    --band-ink:   #FAF8F2;
+    --band-muted: #A6A29A;
+
+    --cover-grad: linear-gradient(135deg, #E7D399 0%, #C9A94F 46%, #A8863A 100%);
+    --cover-ink:  #17181A;
+    --cover-mid:  rgba(23,24,26,.66);
+    --cover-line: rgba(23,24,26,.22);
+
+    --mono: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    --gut: clamp(28px, 6vw, 76px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #0E0E0F;
+      --card:       #17171A;
+      --card-2:     #1E1E21;
+      --ink:        #F3F1EA;
+      --ink-2:      #D0CDC4;
+      --muted:      #918D83;
+      --hair:       #2C2C2F;
+      --hair-soft:  #212124;
+
+      --gold-lt:    #EFDCA6;
+      --gold:       #D6B461;
+      --gold-dp:    #B8964A;
+      --brand:      #D6B461;
+      --brand-deep: #EFDCA6;
+      --brand-tint: #241F12;
+
+      --band-bg:    #08080A;
+      --band-ink:   #F3F1EA;
+      --band-muted: #9E9A90;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #0E0E0F;
+    --card:       #17171A;
+    --card-2:     #1E1E21;
+    --ink:        #F3F1EA;
+    --ink-2:      #D0CDC4;
+    --muted:      #918D83;
+    --hair:       #2C2C2F;
+    --hair-soft:  #212124;
+
+    --gold-lt:    #EFDCA6;
+    --gold:       #D6B461;
+    --gold-dp:    #B8964A;
+    --brand:      #D6B461;
+    --brand-deep: #EFDCA6;
+    --brand-tint: #241F12;
+
+    --band-bg:    #08080A;
+    --band-ink:   #F3F1EA;
+    --band-muted: #9E9A90;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16.5px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .sheet { max-width: 1000px; margin: 0 auto; padding: 0 var(--gut); }
+
+  /* ---------- utilitários tipográficos ---------- */
+  .label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .num {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.01em;
+  }
+
+  p { margin: 0; max-width: 64ch; }
+  .lede { font-size: clamp(18px, 2.2vw, 21px); line-height: 1.5; color: var(--ink-2); max-width: 40ch; }
+
+  /* ============ CAPA ============ */
+  .cover {
+    background: var(--cover-grad);
+    color: var(--cover-ink);
+    padding: clamp(48px, 9vw, 96px) 0 clamp(44px, 7vw, 76px);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: "";
+    position: absolute; inset: 0 0 auto 0; height: 6px;
+    background: var(--cover-ink);
+  }
+
+  .cover-inner { display: flex; flex-direction: column; gap: clamp(30px, 6vw, 60px); }
+
+  .cover-mark {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: .3em;
+    text-transform: lowercase;
+    color: var(--cover-ink);
+    font-weight: 600;
+  }
+
+  .wordmark {
+    font-size: clamp(56px, 15vw, 148px);
+    line-height: .84;
+    letter-spacing: -.055em;
+    font-weight: 700;
+    margin: 0;
+    color: var(--cover-ink);
+  }
+
+  .cover-claim {
+    font-size: clamp(19px, 2.8vw, 27px);
+    line-height: 1.32;
+    font-weight: 380;
+    letter-spacing: -.014em;
+    color: var(--cover-mid);
+    max-width: 24ch;
+    margin: clamp(20px, 3vw, 34px) 0 0;
+    text-wrap: balance;
+  }
+  .cover-claim b { color: var(--cover-ink); font-weight: 560; }
+
+  .cover-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    border-top: 1px solid var(--cover-line);
+    padding-top: 22px;
+  }
+  .meta-cell { flex: 1 1 140px; display: flex; flex-direction: column; gap: 5px; }
+  .meta-cell .label { color: var(--cover-mid); }
+  .meta-cell strong { font-size: 16px; font-weight: 560; letter-spacing: -.01em; color: var(--cover-ink); }
+  .client-name {
+    font-size: 19px !important;
+    font-weight: 680 !important;
+    letter-spacing: -.018em !important;
+  }
+
+  /* ============ SEÇÕES ============ */
+  main { padding: clamp(52px, 8vw, 92px) 0 0; display: flex; flex-direction: column; gap: clamp(52px, 8vw, 88px); }
+
+  .sec { display: grid; grid-template-columns: 68px minmax(0, 1fr); gap: clamp(18px, 3vw, 34px); }
+  .sec-mark { display: flex; flex-direction: column; gap: 9px; }
+  .sec-digit {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brand);
+    letter-spacing: .04em;
+  }
+  .sec-rule { height: 1px; background: var(--hair); margin-top: 3px; }
+  .sec-body { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+  h2 {
+    font-size: clamp(27px, 3.9vw, 38px);
+    line-height: 1.1;
+    letter-spacing: -.028em;
+    font-weight: 600;
+    margin: 0;
+    text-wrap: balance;
+    max-width: 22ch;
+  }
+
+  h3 { font-size: 17px; font-weight: 600; letter-spacing: -.012em; margin: 0; }
+
+  /* ---------- camadas ---------- */
+  .layers { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 2px; }
+  .layer {
+    background: var(--card);
+    border-top: 2px solid var(--gold);
+    padding: 20px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .layer .label { color: var(--brand); }
+  .layer p { font-size: 15px; line-height: 1.55; color: var(--ink-2); }
+
+  /* ---------- destaque em faixa ---------- */
+  .pull {
+    border-left: 3px solid var(--gold);
+    padding: 4px 0 4px 22px;
+    font-size: clamp(18px, 2.3vw, 22px);
+    line-height: 1.42;
+    letter-spacing: -.014em;
+    color: var(--ink);
+    max-width: 34ch;
+    font-weight: 420;
+  }
+
+  /* ---------- lista de escopo ---------- */
+  .scope { display: flex; flex-direction: column; }
+  .scope-item {
+    display: grid;
+    grid-template-columns: minmax(0, 9.5rem) minmax(0, 1fr);
+    gap: clamp(14px, 2.5vw, 30px);
+    padding: 20px 0;
+    border-top: 1px solid var(--hair-soft);
+    align-items: start;
+  }
+  .scope-item:last-child { border-bottom: 1px solid var(--hair-soft); }
+  .scope-item h3 { padding-top: 1px; }
+  .scope-item p { font-size: 15px; color: var(--ink-2); line-height: 1.58; }
+
+  /* ---------- preço ---------- */
+  .price-band {
+    background: var(--band-bg);
+    color: var(--band-ink);
+    padding: clamp(40px, 6vw, 62px) 0;
+    margin-top: 6px;
+    border-top: 3px solid var(--gold);
+    border-bottom: 3px solid var(--gold);
+  }
+  .price-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: clamp(26px, 5vw, 56px); align-items: end; }
+  .price-figure { display: flex; flex-direction: column; gap: 10px; }
+  .price-figure .label { color: var(--band-muted); }
+  .price-value {
+    font-family: var(--mono);
+    font-size: clamp(36px, 6.2vw, 70px);
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -.045em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .price-note { font-size: 14.5px; color: var(--band-muted); line-height: 1.5; max-width: 32ch; }
+  .price-cash {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ---------- comparativo de mercado ---------- */
+  .cmp { display: flex; flex-direction: column; }
+  .cmp-head {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--band-muted);
+    padding-bottom: 11px;
+    border-bottom: 1px solid rgba(255,255,255,.24);
+  }
+  .cmp-row {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto;
+    gap: 16px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,.11);
+  }
+  .cmp-who { font-size: 14.5px; color: var(--band-muted); line-height: 1.35; }
+  .cmp-who small {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: rgba(255,255,255,.40);
+  }
+  .cmp-val {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .cmp-row.is-ours .cmp-who { color: var(--band-ink); font-weight: 600; }
+  .cmp-row.is-ours .cmp-who small { font-weight: 400; color: rgba(255,255,255,.52); }
+  .cmp-row.is-ours .cmp-val { color: var(--gold); }
+  .cmp-note {
+    font-size: 13.5px;
+    color: var(--band-muted);
+    line-height: 1.5;
+    margin-top: 18px;
+    max-width: 44ch;
+  }
+
+  /* ---------- tabelas ---------- */
+  .tbl-wrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 480px; }
+  caption { text-align: left; }
+  th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    text-align: left;
+    padding: 0 16px 11px 0;
+    border-bottom: 1px solid var(--ink);
+  }
+  td {
+    padding: 16px 16px 16px 0;
+    border-bottom: 1px solid var(--hair-soft);
+    vertical-align: top;
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  td:first-child { color: var(--ink); font-weight: 560; padding-right: 24px; }
+  th:last-child, td:last-child { text-align: right; padding-right: 0; }
+  td.v {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ---------- prazo ---------- */
+  .timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 2px; }
+  .tl {
+    background: var(--card);
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    border-top: 1px solid var(--hair);
+  }
+  .tl-week { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--brand); text-transform: uppercase; }
+  .tl h3 { font-size: 15.5px; }
+  .tl p { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+  /* ---------- nota lateral ---------- */
+  .aside {
+    background: var(--brand-tint);
+    border-left: 3px solid var(--gold);
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .aside h3 { color: var(--brand-deep); font-size: 15.5px; }
+  .aside p { font-size: 14.5px; color: var(--ink-2); line-height: 1.55; }
+
+  /* ---------- próximos passos ---------- */
+  .next { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 2px; }
+  .next-item { background: var(--card); padding: 20px 22px; display: flex; flex-direction: column; gap: 8px; }
+  .next-item .sec-digit { font-size: 12px; }
+  .next-item p { font-size: 14.5px; color: var(--ink-2); line-height: 1.52; }
+
+  /* ---------- rodapé ---------- */
+  footer {
+    margin-top: clamp(58px, 9vw, 96px);
+    border-top: 1px solid var(--hair);
+    padding: 30px 0 56px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .foot-brand { display: flex; flex-direction: column; gap: 5px; }
+  .foot-word { font-size: 28px; font-weight: 700; letter-spacing: -.04em; line-height: 1; }
+  .foot-by { font-family: var(--mono); font-size: 11px; letter-spacing: .22em; color: var(--brand); }
+  .foot-meta { font-size: 13px; color: var(--muted); text-align: right; line-height: 1.6; }
+
+  /* ---------- controle de tema ---------- */
+  .tools { position: fixed; top: 14px; right: 14px; z-index: 20; display: flex; gap: 8px; }
+  .tbtn {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    background: var(--card);
+    color: var(--muted);
+    border: 1px solid var(--hair);
+    border-radius: 5px;
+    padding: 8px 11px;
+    cursor: pointer;
+  }
+  .tbtn:hover { color: var(--ink); border-color: var(--brand); }
+  .tbtn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+  @media (max-width: 660px) {
+    .sec { grid-template-columns: 1fr; gap: 14px; }
+    .sec-rule { display: none; }
+    .scope-item { grid-template-columns: 1fr; gap: 6px; }
+    .price-grid { grid-template-columns: 1fr; align-items: start; }
+    .tools { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+  /* ============ IMPRESSÃO ============ */
+  @media print {
+    @page { size: A4; margin: 16mm 14mm; }
+    :root {
+      --paper: #FFFFFF; --card: #FFFFFF; --card-2: #F5F2EA;
+      --ink: #17181A; --ink-2: #3A3B3E; --muted: #6F6C64;
+      --hair: #D6CFBC; --hair-soft: #E6E0D2;
+      --gold: #C9A94F; --gold-lt: #E4CE8C; --gold-dp: #A8863A;
+      --brand: #6F5615; --brand-deep: #55420F; --brand-tint: #F8F2E0;
+      --band-bg: #17181A; --band-ink: #FFFFFF; --band-muted: #B4B0A6;
+    }
+    body { font-size: 10.5pt; line-height: 1.5; background: #fff; }
+    .sheet { max-width: none; padding: 0; }
+    .tools { display: none !important; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cover { padding: 34mm 14mm; page-break-after: always; }
+    .cover .sheet { padding: 0; }
+    .wordmark { font-size: 46pt; }
+    .cover-claim { font-size: 15pt; }
+    main { padding-top: 0; gap: 13mm; }
+    .sec { page-break-inside: avoid; }
+    h2 { font-size: 17pt; }
+    .price-band { padding: 10mm 14mm; margin: 0 -14mm; page-break-inside: avoid; }
+    .price-value { font-size: 30pt; white-space: nowrap; }
+    .scope-item, .layer, .tl, .next-item, tr, .cmp-row { page-break-inside: avoid; }
+    footer { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="tools">
+  <button class="tbtn" id="themeBtn" type="button">Tema</button>
+  <button class="tbtn" id="printBtn" type="button">Salvar PDF</button>
+</div>
+
+<!-- ================= CAPA ================= -->
+<header class="cover">
+  <div class="sheet cover-inner">
+    <span class="cover-mark">verttatech</span>
+
+    <div>
+      <h1 class="wordmark">FRETES</h1>
+      <p class="cover-claim">
+        Quem precisa transportar e quem tem o veículo, conectados
+        <b>com pagamento e prova de entrega dentro do aplicativo.</b>
+      </p>
+    </div>
+
+    <div class="cover-meta">
+      <div class="meta-cell">
+        <span class="label">Preparado para</span>
+        <strong class="client-name">[Nome do cliente]</strong>
+      </div>
+      <div class="meta-cell">
+        <span class="label">Documento</span>
+        <strong>Proposta de desenvolvimento</strong>
+      </div>
+      <div class="meta-cell">
+        <span class="label">Data</span>
+        <strong class="num">Agosto de 2026</strong>
+      </div>
+      <div class="meta-cell">
+        <span class="label">Validade</span>
+        <strong class="num">30 dias</strong>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="sheet">
+
+  <!-- ---------- 01 ---------- -->
+  <section class="sec">
+    <div class="sec-mark"><span class="sec-digit">01</span><div class="sec-rule"></div></div>
+    <div class="sec-body">
+      <h2>Mover um sofá ainda depende de indicação e telefonema</h2>
+      <p class="lede">
+        Os aplicativos de entrega resolveram o pacote pequeno. O item volumoso continua
+        sendo combinado por WhatsApp, sem preço claro e sem garantia nenhuma.
+      </p>
+      <p>
+        Quem contrata não sabe quanto custa antes de ligar para três pessoas, não faz ideia
+        de onde a carga está depois que a van sai, e paga adiantado torcendo para dar certo.
+        Quem transporta trabalha com a agenda vazia entre um frete e outro e corre o risco de
+        chegar ao endereço e descobrir que o item não cabe no veículo. Móveis, eletrodomésticos,
+        material de construção e equipamentos de médio porte movimentam dinheiro todos os dias
+        em um mercado que ninguém organizou.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- 02 ---------- -->
+  <section class="sec">
+    <div class="sec-mark"><span class="sec-digit">02</span><div class="sec-rule"></div></div>
+    <div class="sec-body">
+      <h2>A plataforma resolve isso em três frentes</h2>
+
+      <div class="layers">
+        <article class="layer">
+          <span class="label">Frente 01</span>
+          <h3>Aplicativo do cliente</h3>
+          <p>Publica o frete com foto, endereço de coleta e entrega e o tipo de veículo,
+             escolhe entre os entregadores interessados e acompanha a carga no mapa.</p>
+        </article>
+        <article class="layer">
+          <span class="label">Frente 02</span>
+          <h3>Aplicativo do entregador</h3>
+          <p>Vê os fretes da região compatíveis com o veículo dele, aceita o que interessa,
+             registra a coleta por foto e recebe pelo próprio aplicativo.</p>
+        </article>
+        <article class="layer">
+          <span class="label">Frente 03</span>
+          <h3>Pagamento e confiança</h3>
+          <p>O valor fica reservado no cartão na hora do aceite e só é liberado quando a
+             entrega é confirmada com foto. A comissão da plataforma é separada sozinha.</p>
+        </article>
+      </div>
+
+      <p class="pull">
+        O dinheiro só troca de mãos quando a foto da entrega chega. É isso que faz um
+        desconhecido confiar em outro.
+      </p>
+
+      <p>
+        Cada foto sai do aplicativo com data, hora e localização gravadas. Se houver
+        divergência sobre o estado do item, a discussão deixa de ser palavra contra palavra e
+        passa a ter registro. Cliente e entregador se avaliam depois de cada frete, e a nota
+        aparece antes do próximo aceite — a plataforma vai ficando melhor conforme roda.
+      </p>
+    </div>
+  </section>
+
+  <!-- ---------- 03 ---------- -->
+  <section class="sec">
+    <div class="sec-mark"><span class="sec-digit">03</span><div class="sec-rule"></div></div>
+    <div class="sec-body">
+      <h2>O que será entregue</h2>
+      <p>
+        Dois aplicativos publicados nas lojas da Apple e do Google, o servidor que sustenta os
+        dois e o painel de onde a operação é administrada. Tudo funcionando em produção ao
+        final das quatorze semanas.
+      </p>
+
+      <div class="scope">
+        <div class="scope-item">
+          <h3>Cadastro e acesso</h3>
+          <p>Registro por e-mail e telefone com confirmação por código, e envio de CNH e
+             documento do veículo no cadastro do entregador.</p>
+        </div>
+        <div class="scope-item">
+          <h3>Pedido de frete</h3>
+          <p>Coleta e entrega marcadas no mapa, descrição da carga, tipo de veículo necessário
+             e fotos obrigatórias do item.</p>
+        </div>
+        <div class="scope-item">
+          <h3>Aceite e escolha</h3>
+          <p>Lista dos entregadores interessados com perfil, avaliação e histórico. O cliente
+             escolhe e o contato entre os dois é liberado.</p>
+        </div>
+        <div class="scope-item">
+          <h3>Rastreamento</h3>
+          <p>Posição do entregador no mapa durante o transporte e aviso no celular a cada
+             mudança de etapa: aceito, coletado, em trânsito, entregue.</p>
+        </div>
+        <div class="scope-item">
+          <h3>Prova por foto</h3>
+          <p>Foto obrigatória na coleta e na entrega, com data, hora e localização gravadas,
+             guardadas junto do pedido.</p>
+        </div>
+        <div class="scope-item">
+          <h3>Pagamento</h3>
+          <p>Cartão de crédito e Pix, valor reservado no aceite e liberado na entrega, com a
+             comissão da plataforma separada automaticamente do repasse ao entregador.</p>
+        </div>
+        <div class="scope-item">
+          <h3>Avaliações</h3>
+          <p>Nota e comentário nos dois sentidos, histórico de fretes e denúncia de
+             comportamento inadequado.</p>
+        </div>
+        <div class="scope-item">
+          <h3>Memória de rotas</h3>
+          <p>Cada trajeto calculado fica guardado com distância e tempo. Trajetos repetidos são
+             respondidos pelo próprio banco, reduzindo a conta mensal de mapas conforme a
+             operação cresce.</p>
+        </div>
+        <div class="scope-item">
+          <h3>Painel administrativo</h3>
+          <p>Acompanhamento dos fretes em andamento, aprovação de cadastros, mediação de
+             disputas, estorno e atendimento aos pedidos de exclusão de dados exigidos pela LGPD.</p>
+        </div>
+        <div class="scope-item">
+          <h3>Publicação</h3>
+          <p>Envio dos dois aplicativos para a App Store e o Google Play, servidor configurado
+             com backup diário e certificado de segurança.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ---------- 04 · PREÇO ---------- -->
+<section class="price-band">
+  <div class="sheet">
+    <div class="price-grid">
+      <div class="price-figure">
+        <span class="label">04 · Investimento de desenvolvimento</span>
+        <span class="price-value">R$ 155.000</span>
+        <span class="price-cash">Valor à vista · escopo completo · 14 semanas</span>
+        <p class="price-note">
+          Pagamento à vista na assinatura. Os dois aplicativos, o servidor, o painel
+          administrativo e a publicação nas lojas.
+          Código-fonte e infraestrutura em nome do cliente ao final. Sessenta dias de
+          garantia sobre falhas depois da entrega.
+        </p>
+      </div>
+
+      <div class="cmp">
+        <div class="cmp-head">O mesmo escopo, no mercado em 2026</div>
+
+        <div class="cmp-row">
+          <span class="cmp-who">
+            Fábrica de software
+            <small>Equipe de 5 a 7 pessoas · 4 a 5 meses · camadas de gestão no preço</small>
+          </span>
+          <span class="cmp-val">R$ 200.000 – 320.000</span>
+        </div>
+
+        <div class="cmp-row">
+          <span class="cmp-who">
+            Agência com equipe terceirizada
+            <small>Interface bem resolvida, backend e pagamento subcontratados</small>
+          </span>
+          <span class="cmp-val">R$ 140.000 – 220.000</span>
+        </div>
+
+        <div class="cmp-row is-ours">
+          <span class="cmp-who">
+            verttatech
+            <small>Desenvolvimento sênior dedicado · 14 semanas · sem intermediários</small>
+          </span>
+          <span class="cmp-val">R$ 155.000</span>
+        </div>
+
+        <p class="cmp-note">
+          A diferença não é desconto. É a ausência de gerente de projeto, coordenador e
+          analista entre quem decide e quem escreve o código — em um projeto deste tamanho,
+          essa camada custa entre 30% e 40% do orçamento.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="sheet" style="padding-top:clamp(52px,8vw,88px)">
+
+  <!-- ---------- 05 ---------- -->
+  <section class="sec">
+    <div class="sec-mark"><span class="sec-digit">05</span><div class="sec-rule"></div></div>
+    <div class="sec-body">
+      <h2>Android, iOS ou as duas lojas</h2>
+      <p>
+        O código é o mesmo para as duas plataformas — a diferença de preço está no que cada
+        loja exige por fora: contas, certificados, testes em aparelhos diferentes e o processo
+        de análise de cada uma. O valor de R$ 155.000 cobre as duas.
+      </p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>Publicação</th><th>Quando faz sentido</th><th>Valor</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Só Android</td>
+              <td>Cerca de 8 em cada 10 celulares no Brasil. Entregador autônomo está quase
+                  todo aqui, e a loja libera o aplicativo em horas</td>
+              <td class="v">R$ 143.000</td>
+            </tr>
+            <tr>
+              <td>Só iOS</td>
+              <td>Público de maior renda, que costuma ser quem contrata o frete. Análise mais
+                  rigorosa e conta paga anualmente</td>
+              <td class="v">R$ 145.000</td>
+            </tr>
+            <tr>
+              <td>Android e iOS</td>
+              <td>Cliente e entregador entram pelo aparelho que já têm, sem perder cadastro
+                  nos dois lados do marketplace</td>
+              <td class="v">R$ 155.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="aside">
+        <h3>Acrescentar depois custa mais caro</h3>
+        <p>
+          Publicar nas duas de uma vez custa R$ 12.000 a mais que publicar em uma. Voltar
+          seis meses depois para incluir a segunda custa R$ 22.000, porque significa revisitar
+          telas já construídas, refazer os testes de câmera e GPS e passar por uma análise de
+          loja com o aplicativo já em operação. Em um marketplace, o custo maior nem é esse:
+          é o entregador que se cadastrou e não consegue trabalhar porque o cliente está do
+          outro lado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- 06 ---------- -->
+  <section class="sec">
+    <div class="sec-mark"><span class="sec-digit">06</span><div class="sec-rule"></div></div>
+    <div class="sec-body">
+      <h2>Quatorze semanas até estar nas lojas</h2>
+
+      <div class="timeline">
+        <div class="tl">
+          <span class="tl-week">Semanas 1–2</span>
+          <h3>Desenho</h3>
+          <p>Todas as telas desenhadas e aprovadas antes de qualquer linha de código.</p>
+        </div>
+        <div class="tl">
+          <span class="tl-week">Semanas 3–5</span>
+          <h3>Base e cadastro</h3>
+          <p>Servidor no ar, cadastro e login dos dois perfis funcionando.</p>
+        </div>
+        <div class="tl">
+          <span class="tl-week">Semanas 6–8</span>
+          <h3>Motor de fretes</h3>
+          <p>Criação de pedido, aceite, fotos e cálculo de rota funcionando ponta a ponta.</p>
+        </div>
+        <div class="tl">
+          <span class="tl-week">Semanas 9–12</span>
+          <h3>Aplicativos</h3>
+          <p>As telas dos dois aplicativos, rastreamento no mapa e avisos no celular.</p>
+        </div>
+        <div class="tl">
+          <span class="tl-week">Semanas 13–14</span>
+          <h3>Pagamento e publicação</h3>
+          <p>Integração financeira, testes com fretes reais e envio às lojas.</p>
+        </div>
+      </div>
+
+      <p>
+        A reunião de acompanhamento é semanal e sempre com o aplicativo na tela. Ao final de
+        cada etapa você recebe a versão de teste no seu celular e aprova antes de a etapa
+        seguinte começar.
+      </p>
+
+      <div class="aside">
+        <h3>Sobre a análise das lojas</h3>
+        <p>
+          A Apple e o Google analisam cada aplicativo antes de publicar, e esse prazo não
+          depende de nós. O envio acontece dentro das quatorze semanas; a liberação costuma sair
+          entre três e dez dias depois, e reenvios por ajuste de política são acompanhados
+          sem custo adicional.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- 07 ---------- -->
+  <section class="sec">
+    <div class="sec-mark"><span class="sec-digit">07</span><div class="sec-rule"></div></div>
+    <div class="sec-body">
+      <h2>De onde vem o valor</h2>
+      <p>
+        Orçamento fechado sem discriminação é um pedido de confiança cega. Abaixo está como os
+        R$ 155.000 se distribuem entre as partes do sistema, para que cada bloco possa ser
+        discutido separadamente — inclusive retirado, se não fizer sentido agora.
+      </p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>Bloco</th><th>Por que custa o que custa</th><th>Valor</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Desenho e arquitetura</td>
+              <td>Todas as telas desenhadas e aprovadas, modelagem do banco e decisões de
+                  estrutura. É a etapa que evita retrabalho caro nas seguintes</td>
+              <td class="v">R$ 16.000</td>
+            </tr>
+            <tr>
+              <td>Servidor e base de dados</td>
+              <td>Infraestrutura, banco, armazenamento de fotos, backup, certificado de
+                  segurança e o cadastro verificado dos dois perfis</td>
+              <td class="v">R$ 15.000</td>
+            </tr>
+            <tr>
+              <td>Motor de fretes</td>
+              <td>O cérebro da plataforma: pedido, compatibilização por tipo de veículo,
+                  aceite, cálculo de rota e memória de trajetos</td>
+              <td class="v">R$ 26.000</td>
+            </tr>
+            <tr>
+              <td>Aplicativo do cliente</td>
+              <td>Maior bloco em número de telas: publicação do frete, escolha do entregador,
+                  acompanhamento, histórico e pagamento</td>
+              <td class="v">R$ 28.000</td>
+            </tr>
+            <tr>
+              <td>Aplicativo do entregador</td>
+              <td>Fretes da região, aceite, câmera com registro de coleta e entrega, ganhos e
+                  histórico de atendimentos</td>
+              <td class="v">R$ 22.000</td>
+            </tr>
+            <tr>
+              <td>Rastreamento e avisos</td>
+              <td>GPS em segundo plano sem consumir bateria, posição no mapa, notificação a
+                  cada mudança de etapa e avaliações nos dois sentidos</td>
+              <td class="v">R$ 17.000</td>
+            </tr>
+            <tr>
+              <td>Pagamento e repasse</td>
+              <td>Reserva do valor no aceite, liberação na entrega, separação automática da
+                  comissão, estorno e retenção em caso de disputa</td>
+              <td class="v">R$ 15.000</td>
+            </tr>
+            <tr>
+              <td>Painel administrativo</td>
+              <td>Onde sua equipe aprova cadastros, acompanha fretes, resolve disputas e atende
+                  aos pedidos de exclusão de dados exigidos pela LGPD</td>
+              <td class="v">R$ 9.000</td>
+            </tr>
+            <tr>
+              <td>Testes, publicação e garantia</td>
+              <td>Fretes de teste ponta a ponta, envio às duas lojas, acompanhamento da análise
+                  e 60 dias de correção sem custo</td>
+              <td class="v">R$ 7.000</td>
+            </tr>
+            <tr class="total">
+              <td>Total</td>
+              <td>Escopo completo, nas duas lojas</td>
+              <td class="v">R$ 155.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="pull">
+        Metade do valor está nos dois aplicativos. A outra metade está no que os faz funcionar
+        sem alguém precisar intervir a cada frete.
+      </p>
+
+      <div class="aside">
+        <h3>Onde está a complexidade que não aparece na tela</h3>
+        <p>
+          Pagamento e rastreamento somam R$ 32.000 e ocupam poucas telas. É onde mora o trabalho
+          difícil: reservar dinheiro no cartão sem cobrar, liberar apenas contra prova de
+          entrega, separar a comissão sozinho e manter o GPS reportando com o celular no bolso
+          sem acabar com a bateria do entregador. São os pontos em que plataformas desse tipo
+          costumam falhar depois de lançadas — e é por isso que não são o lugar de economizar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- 08 ---------- -->
+  <section class="sec">
+    <div class="sec-mark"><span class="sec-digit">08</span><div class="sec-rule"></div></div>
+    <div class="sec-body">
+      <h2>Onde a plataforma vai rodar</h2>
+      <p>
+        Tudo é instalado em contas abertas no nome da sua empresa, com você como titular. Nós
+        configuramos e operamos durante o projeto, mas o acesso e a propriedade são seus desde
+        o primeiro dia.
+      </p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>Componente</th><th>Onde fica</th><th>Por que assim</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Servidor e banco de dados</td>
+              <td>Nuvem AWS, região de São Paulo</td>
+              <td>Dados em território nacional e resposta rápida para quem usa no Brasil</td>
+            </tr>
+            <tr>
+              <td>Fotos de carga, coleta e entrega</td>
+              <td>Armazenamento AWS, mesma região</td>
+              <td>Cresce sem limite prático e custa por uso, sem investimento inicial</td>
+            </tr>
+            <tr>
+              <td>Mapas, endereços e rotas</td>
+              <td>Google Maps Platform</td>
+              <td>Base de endereços mais precisa do país, com a memória de rotas reduzindo o
+                  número de consultas ao longo do tempo</td>
+            </tr>
+            <tr>
+              <td>Avisos no celular</td>
+              <td>Firebase, do Google</td>
+              <td>Funciona nas duas plataformas e é gratuito no volume de um marketplace em
+                  formação</td>
+            </tr>
+            <tr>
+              <td>Pagamentos</td>
+              <td>Mercado Pago ou Pagar.me, conta da sua empresa</td>
+              <td>Reserva de valor e repasse automático já prontos, com o dinheiro caindo direto
+                  na sua conta</td>
+            </tr>
+            <tr>
+              <td>Aplicativos</td>
+              <td>App Store e Google Play</td>
+              <td>Publicados sob o nome da sua empresa, com as avaliações e o histórico
+                  pertencendo a você</td>
+            </tr>
+            <tr>
+              <td>Painel administrativo</td>
+              <td>Navegador, em endereço próprio</td>
+              <td>Sua equipe acessa de qualquer computador, sem instalar nada</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="aside">
+        <h3>Seus dados não saem do Brasil</h3>
+        <p>
+          Servidor, banco e fotos ficam em São Paulo. Além de deixar a plataforma mais rápida
+          para quem usa, isso simplifica a adequação à LGPD: como não há transferência
+          internacional de dados, as exigências adicionais que a lei impõe nesse caso não se
+          aplicam. Senhas são guardadas cifradas e toda a comunicação entre aplicativo e
+          servidor é criptografada.
+        </p>
+      </div>
+
+      <p>
+        Nenhuma dessas escolhas prende você a um fornecedor. Se um dia quiser trocar de nuvem,
+        de meio de pagamento ou levar o sistema para outra equipe, o código é seu e a estrutura
+        permite a troca sem reescrever a plataforma.
+      </p>
+    </div>
+  </section>
+
+    <!-- ---------- 09 ---------- -->
+  <section class="sec">
+    <div class="sec-mark"><span class="sec-digit">09</span><div class="sec-rule"></div></div>
+    <div class="sec-body">
+      <h2>O que não está no valor</h2>
+      <p>
+        Três custos existem em qualquer aplicativo desse tipo e são contratados diretamente
+        por você, no seu nome, sem nenhuma margem nossa embutida. Nós configuramos tudo.
+      </p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>Custo</th><th>Por que existe</th><th>Ordem de grandeza</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Servidor e armazenamento</td>
+              <td>Onde a plataforma roda e onde as fotos das cargas ficam guardadas</td>
+              <td class="v">R$ 400 – 900 / mês</td>
+            </tr>
+            <tr>
+              <td>Mapas e rotas</td>
+              <td>Cobrado por consulta de endereço e cálculo de rota. Cresce nos primeiros
+                  meses e depois desacelera, pelo motivo explicado abaixo</td>
+              <td class="v">R$ 200 – 900 / mês</td>
+            </tr>
+            <tr>
+              <td>Contas das lojas</td>
+              <td>Exigência da Apple e do Google para publicar em nome da sua empresa</td>
+              <td class="v">US$ 99 / ano + US$ 25</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="aside">
+        <h3>O custo de mapas cai com o uso</h3>
+        <p>
+          Cada rota calculada fica guardada no banco da plataforma com a distância e o tempo
+          apurados. Quando outro frete pede o mesmo trajeto — e em uma cidade os trajetos se
+          repetem muito: mesmo depósito, mesma loja de material, mesmos bairros — a resposta
+          sai do próprio banco, sem nova consulta ao serviço de mapas. Na prática, o custo é
+          alto nos primeiros meses, enquanto a base se forma, e vai perdendo relação com o
+          número de fretes conforme a operação amadurece. É o inverso do que acontece em
+          plataformas que consultam a API a cada pedido.
+        </p>
+      </div>
+
+      <h3>Também fora do escopo desta proposta</h3>
+      <p>
+        Redação dos termos de uso e da política de privacidade por advogado, abertura da conta
+        no meio de pagamento, marketing de lançamento e captação dos primeiros entregadores.
+        São itens que dependem de você ou de terceiros e que preferimos não embutir em um
+        valor que você não conseguiria auditar.
+      </p>
+
+      <h3>Depois da entrega</h3>
+      <p>
+        Os sessenta dias de garantia cobrem qualquer falha do que foi entregue. Passado esse
+        prazo, o acompanhamento mensal é opcional e pode ser contratado, pausado ou retomado
+        quando fizer sentido — sem fidelidade.
+      </p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>Acompanhamento</th><th>O que inclui</th><th>Por mês</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Essencial</td>
+              <td>Monitoramento do servidor, conferência do backup, atualizações de segurança,
+                  correção de falhas e adequação às mudanças obrigatórias das lojas</td>
+              <td class="v">R$ 2.400</td>
+            </tr>
+            <tr>
+              <td>Evolução</td>
+              <td>Tudo do Essencial, mais 20 horas mensais para novas funcionalidades e
+                  ajustes, com prioridade no atendimento</td>
+              <td class="v">R$ 5.900</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="aside">
+        <h3>A plataforma é sua</h3>
+        <p>
+          Ao final, o código-fonte, o servidor, as contas das lojas e os dados ficam no nome da
+          sua empresa. Não há mensalidade obrigatória e nada deixa de funcionar se a verttatech
+          sair de cena. Você não aluga o aplicativo: ele passa a ser um ativo do seu negócio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- 10 ---------- -->
+  <section class="sec">
+    <div class="sec-mark"><span class="sec-digit">10</span><div class="sec-rule"></div></div>
+    <div class="sec-body">
+      <h2>Como o escopo pode mudar no caminho</h2>
+      <p>
+        Ajustes de tela, texto e comportamento são normais durante o desenvolvimento e estão
+        incluídos na etapa correspondente. Funcionalidade nova é outra conversa: avaliamos o
+        impacto em horas, você aprova por escrito, e prazo e valor são ajustados juntos. Nada
+        entra em silêncio para virar atraso depois.
+      </p>
+
+      <h2 style="font-size:clamp(24px,3.2vw,30px)">Próximos passos</h2>
+
+      <div class="next">
+        <div class="next-item">
+          <span class="sec-digit">01</span>
+          <p>Uma conversa para revisar o escopo e ajustar prioridades.</p>
+        </div>
+        <div class="next-item">
+          <span class="sec-digit">02</span>
+          <p>Aceite desta proposta e assinatura do contrato.</p>
+        </div>
+        <div class="next-item">
+          <span class="sec-digit">03</span>
+          <p>Abertura das contas de servidor, lojas e meio de pagamento no seu nome.</p>
+        </div>
+        <div class="next-item">
+          <span class="sec-digit">04</span>
+          <p>Início do desenho das telas, com demonstração semanal.</p>
+        </div>
+      </div>
+
+      <p>
+        Esta proposta é válida por 30 dias. Qualquer ponto do escopo pode ser revisto antes do
+        aceite — se algo aqui não corresponde ao que você precisa, é melhor descobrir agora do
+        que na entrega.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-brand">
+      <span class="foot-by">verttatech</span>
+      <span class="foot-word">FRETES</span>
+    </div>
+    <div class="foot-meta">
+      Proposta de desenvolvimento · Agosto de 2026<br>
+      Válida por 30 dias a partir da emissão
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  (function () {
+    "use strict";
+    document.getElementById("themeBtn").addEventListener("click", function () {
+      var root = document.documentElement;
+      var cur = root.getAttribute("data-theme");
+      if (!cur) {
+        cur = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+    });
+    document.getElementById("printBtn").addEventListener("click", function () {
+      window.print();
+    });
+  })();
+</script>
+</body>
+</html>
