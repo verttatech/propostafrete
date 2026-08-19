@@ -6,6 +6,6 @@ RUN rm -rf /usr/share/nginx/html/*
 
 # configuração e conteúdo
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY site/ /usr/share/nginx/html/
+COPY proposta-fretes-x7k2/ /usr/share/nginx/html/proposta-fretes-x7k2/
 
 EXPOSE 80
