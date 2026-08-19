@@ -454,39 +454,6 @@
 
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 
-
-  /* ---------- alternador de versões ---------- */
-  .switcher {
-    position: sticky; top: 0; z-index: 30;
-    background: var(--paper);
-    border-bottom: 1px solid var(--hair);
-    display: flex; justify-content: center; gap: 4px;
-    padding: 10px var(--gut);
-  }
-  .swbtn {
-    font-family: var(--mono);
-    font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-    background: transparent; color: var(--muted);
-    border: 1px solid var(--hair); border-radius: 999px;
-    padding: 9px 16px; cursor: pointer; white-space: nowrap;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .swbtn b { font-weight: 700; color: var(--ink-2); letter-spacing: -.01em; font-size: 12px; }
-  .swbtn:hover { border-color: var(--brand); color: var(--ink); }
-  .swbtn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
-  .swbtn[aria-selected="true"] {
-    background: var(--ink); border-color: var(--ink); color: var(--paper);
-  }
-  .swbtn[aria-selected="true"] b { color: var(--paper); }
-  .doc[hidden] { display: none; }
-  .tools { top: 60px; }
-
-  @media (max-width: 660px) {
-    .switcher { padding: 8px 12px; gap: 3px; }
-    .swbtn { font-size: 10px; padding: 8px 11px; gap: 5px; }
-    .swbtn b { font-size: 11px; }
-  }
-
   /* ============ IMPRESSÃO ============ */
   @media print {
     @page { size: A4; margin: 16mm 14mm; }
@@ -501,8 +468,6 @@
     body { font-size: 10.5pt; line-height: 1.5; background: #fff; }
     .sheet { max-width: none; padding: 0; }
     .tools { display: none !important; }
-    .switcher { display: none !important; }
-
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .cover { padding: 34mm 14mm; page-break-after: always; }
     .cover .sheet { padding: 0; }
@@ -520,21 +485,11 @@
 </head>
 <body>
 
-<nav class="switcher" role="tablist" aria-label="Versões da proposta">
-  <button class="swbtn" id="tab-completa" role="tab" aria-selected="true" aria-controls="doc-completa" type="button">
-    Plataforma completa <b>R$ 155.000</b>
-  </button>
-  <button class="swbtn" id="tab-validacao" role="tab" aria-selected="false" aria-controls="doc-validacao" type="button">
-    Versão de validação <b>R$ 75.000</b>
-  </button>
-</nav>
-
 <div class="tools">
   <button class="tbtn" id="themeBtn" type="button">Tema</button>
   <button class="tbtn" id="printBtn" type="button">Salvar PDF</button>
 </div>
 
-<div class="doc" id="doc-completa" role="tabpanel" aria-labelledby="tab-completa">
 <!-- ================= CAPA ================= -->
 <header class="cover">
   <div class="sheet cover-inner">
@@ -575,35 +530,19 @@
   <section class="sec">
     <div class="sec-mark"><span class="sec-digit">01</span><div class="sec-rule"></div></div>
     <div class="sec-body">
-      <h2>O aplicativo de frete chegou às capitais e parou por lá</h2>
+      <h2>Mover um sofá ainda depende de indicação e telefonema</h2>
       <p class="lede">
-        Lalamove, Uber Flash Utilitário e Quero Frete já resolveram o transporte de itens
-        volumosos — em São Paulo, Campinas, Ribeirão Preto e um punhado de capitais.
+        Os aplicativos de entrega resolveram o pacote pequeno. O item volumoso continua
+        sendo combinado por WhatsApp, sem preço claro e sem garantia nenhuma.
       </p>
       <p>
-        Fora desse eixo, mover um sofá continua dependendo de indicação e telefonema. Quem
-        contrata não sabe quanto custa antes de ligar para três pessoas, não faz ideia de onde a
-        carga está depois que a van sai, e paga adiantado torcendo para dar certo. Quem
-        transporta fica com a agenda vazia entre um frete e outro e corre o risco de chegar ao
-        endereço e descobrir que o item não cabe no veículo.
+        Quem contrata não sabe quanto custa antes de ligar para três pessoas, não faz ideia
+        de onde a carga está depois que a van sai, e paga adiantado torcendo para dar certo.
+        Quem transporta trabalha com a agenda vazia entre um frete e outro e corre o risco de
+        chegar ao endereço e descobrir que o item não cabe no veículo. Móveis, eletrodomésticos,
+        material de construção e equipamentos de médio porte movimentam dinheiro todos os dias
+        em um mercado que ninguém organizou.
       </p>
-      <p>
-        A oportunidade não é inventar uma categoria: é ocupar uma praça antes que as
-        plataformas nacionais cheguem nela. Elas expandem por densidade populacional e
-        priorizam regiões metropolitanas — o que dá uma janela real para quem chega primeiro,
-        conhece os transportadores da região pelo nome e resolve o problema com um serviço que
-        os grandes atendem de longe, quando atendem.
-      </p>
-
-      <div class="aside">
-        <h3>Chegar primeiro vale mais do que chegar diferente</h3>
-        <p>
-          Em marketplace, quem forma a base dos dois lados primeiro fica difícil de deslocar: o
-          cliente vai onde tem entregador, e o entregador vai onde tem frete. Uma praça com
-          cadastro consolidado e histórico de avaliações não se copia com investimento — se
-          copia com tempo, e o tempo é justamente o que a operação local ganha de vantagem.
-        </p>
-      </div>
     </div>
   </section>
 
@@ -738,11 +677,10 @@
 
         <div class="cmp-row">
           <span class="cmp-who">
-            Software house · marketplace transacional
-            <small>Faixa publicada para app com dois perfis, pagamento, geolocalização e
-                   painel · 5 a 9 meses</small>
+            Fábrica de software
+            <small>Equipe de 5 a 7 pessoas · 4 a 5 meses · camadas de gestão no preço</small>
           </span>
-          <span class="cmp-val">R$ 280.000 – 700.000</span>
+          <span class="cmp-val">R$ 200.000 – 320.000</span>
         </div>
 
         <div class="cmp-row">
@@ -750,7 +688,7 @@
             Agência com equipe terceirizada
             <small>Interface bem resolvida, backend e pagamento subcontratados</small>
           </span>
-          <span class="cmp-val">R$ 150.000 – 500.000</span>
+          <span class="cmp-val">R$ 140.000 – 220.000</span>
         </div>
 
         <div class="cmp-row is-ours">
@@ -764,8 +702,7 @@
         <p class="cmp-note">
           A diferença não é desconto. É a ausência de gerente de projeto, coordenador e
           analista entre quem decide e quem escreve o código — em um projeto deste tamanho,
-          essa camada custa entre 30% e 40% do orçamento. As faixas acima são as praticadas no
-          mercado brasileiro em 2026 para escopo equivalente.
+          essa camada custa entre 30% e 40% do orçamento.
         </p>
       </div>
     </div>
@@ -1206,543 +1143,10 @@
   </footer>
 
 </main>
-</div>
-
-<div class="doc" id="doc-validacao" role="tabpanel" aria-labelledby="tab-validacao" hidden>
-<!-- ================= CAPA ================= -->
-<header class="cover">
-  <div class="sheet cover-inner">
-    <span class="cover-mark">verttatech</span>
-
-    <div>
-      <h1 class="wordmark">FRETES</h1>
-      <p class="cover-claim">
-        Uma versão enxuta, no ar em oito semanas,
-        <b>para descobrir se a praça responde antes de investir no resto.</b>
-      </p>
-    </div>
-
-    <div class="cover-meta">
-      <div class="meta-cell">
-        <span class="label">Preparado para</span>
-        <strong class="client-name">[Nome do cliente]</strong>
-      </div>
-      <div class="meta-cell">
-        <span class="label">Documento</span>
-        <strong>Proposta de validação</strong>
-      </div>
-      <div class="meta-cell">
-        <span class="label">Data</span>
-        <strong class="num">Agosto de 2026</strong>
-      </div>
-      <div class="meta-cell">
-        <span class="label">Validade</span>
-        <strong class="num">30 dias</strong>
-      </div>
-    </div>
-  </div>
-</header>
-
-<main class="sheet">
-
-  <!-- ---------- 01 ---------- -->
-  <section class="sec">
-    <div class="sec-mark"><span class="sec-digit">01</span><div class="sec-rule"></div></div>
-    <div class="sec-body">
-      <h2>A pergunta que precisa ser respondida primeiro</h2>
-      <p class="lede">
-        Existe demanda suficiente de frete volumoso nesta praça para sustentar uma plataforma?
-        Nenhum documento responde isso. Só o uso real.
-      </p>
-      <p>
-        Lalamove, Uber Flash Utilitário e Quero Frete já resolveram esse transporte nas capitais
-        e regiões metropolitanas. Fora desse eixo, o serviço continua sendo combinado por
-        telefone — o que é uma oportunidade, mas também uma incógnita: ninguém sabe quantos
-        fretes por semana a região gera, quantos transportadores se cadastram, e qual preço as
-        pessoas aceitam pagar.
-      </p>
-      <p>
-        Esta proposta existe para responder isso gastando o mínimo. Em oito semanas você tem um
-        aplicativo real na rua, com fretes reais acontecendo, e dados para decidir se vale
-        construir a plataforma completa.
-      </p>
-
-      <div class="aside">
-        <h3>Por que não começar pela versão completa</h3>
-        <p>
-          O motivo mais comum de fracasso de produtos digitais não é qualidade técnica: é
-          construir algo para uma demanda que não existia no tamanho imaginado. Lançar uma
-          versão enxuta antes reduz o investimento inicial de forma expressiva e transforma a
-          decisão seguinte em algo baseado em números de uso, não em suposição.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ---------- 02 ---------- -->
-  <section class="sec">
-    <div class="sec-mark"><span class="sec-digit">02</span><div class="sec-rule"></div></div>
-    <div class="sec-body">
-      <h2>Um aplicativo, dois perfis, uma loja</h2>
-      <p>
-        Em vez de dois aplicativos publicados nas duas lojas, um único aplicativo Android que
-        abre como cliente ou como entregador, conforme o cadastro. Metade da superfície para
-        construir, testar e publicar — e a mesma pergunta respondida.
-      </p>
-
-      <div class="layers">
-        <article class="layer">
-          <span class="label">Perfil 01</span>
-          <h3>Cliente</h3>
-          <p>Publica o frete com foto, endereço de coleta e entrega e tipo de veículo, escolhe
-             entre os interessados e acompanha o status.</p>
-        </article>
-        <article class="layer">
-          <span class="label">Perfil 02</span>
-          <h3>Entregador</h3>
-          <p>Vê os fretes da região, aceita o que interessa e registra coleta e entrega por
-             foto.</p>
-        </article>
-        <article class="layer">
-          <span class="label">Nos dois</span>
-          <h3>Confiança</h3>
-          <p>Cadastro verificado, CNH do entregador, fotos com data, hora e local, e histórico
-             de todos os fretes.</p>
-        </article>
-      </div>
-
-      <p class="pull">
-        A pergunta desta fase não é "o aplicativo é completo?". É "as pessoas usam?".
-      </p>
-    </div>
-  </section>
-
-  <!-- ---------- 03 ---------- -->
-  <section class="sec">
-    <div class="sec-mark"><span class="sec-digit">03</span><div class="sec-rule"></div></div>
-    <div class="sec-body">
-      <h2>O que será entregue</h2>
-
-      <div class="scope">
-        <div class="scope-item">
-          <h3>Cadastro verificado</h3>
-          <p>Registro por telefone com confirmação por código, escolha do perfil e envio de CNH
-             e documento do veículo para o entregador.</p>
-        </div>
-        <div class="scope-item">
-          <h3>Pedido de frete</h3>
-          <p>Coleta e entrega marcadas no mapa, descrição da carga, tipo de veículo necessário
-             e fotos obrigatórias do item.</p>
-        </div>
-        <div class="scope-item">
-          <h3>Aceite</h3>
-          <p>Fretes da região visíveis para os entregadores, manifestação de interesse e escolha
-             pelo cliente, com liberação do contato entre os dois.</p>
-        </div>
-        <div class="scope-item">
-          <h3>Status do frete</h3>
-          <p>Atualização manual pelo entregador em cada etapa — aceito, coletado, entregue — com
-             aviso no celular do cliente.</p>
-        </div>
-        <div class="scope-item">
-          <h3>Prova por foto</h3>
-          <p>Foto obrigatória na coleta e na entrega, com data, hora e localização gravadas.</p>
-        </div>
-        <div class="scope-item">
-          <h3>Avaliação</h3>
-          <p>Nota e comentário do cliente para o entregador ao final de cada frete, com
-             histórico visível.</p>
-        </div>
-        <div class="scope-item">
-          <h3>Memória de rotas</h3>
-          <p>Cada trajeto calculado fica guardado com distância e tempo, reduzindo o custo
-             mensal de mapas conforme a operação cresce.</p>
-        </div>
-        <div class="scope-item">
-          <h3>Publicação</h3>
-          <p>Envio ao Google Play, servidor configurado com backup diário e certificado de
-             segurança, e 30 dias de garantia sobre falhas.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ---------- 04 · PREÇO ---------- -->
-<section class="price-band">
-  <div class="sheet">
-    <div class="price-grid">
-      <div class="price-figure">
-        <span class="label">04 · Investimento de validação</span>
-        <span class="price-value">R$ 75.000</span>
-        <span class="price-cash">Valor à vista · 8 semanas · Android</span>
-        <p class="price-note">
-          Aplicativo único com dois perfis, servidor e publicação no Google Play. Código-fonte e
-          infraestrutura em nome do cliente ao final, com 30 dias de garantia.
-        </p>
-      </div>
-
-      <div class="cmp">
-        <div class="cmp-head">Onde isso se situa no mercado de 2026</div>
-
-        <div class="cmp-row">
-          <span class="cmp-who">
-            Software house · marketplace transacional
-            <small>Faixa publicada para plataforma completa · 5 a 9 meses</small>
-          </span>
-          <span class="cmp-val">R$ 280.000 – 700.000</span>
-        </div>
-
-        <div class="cmp-row">
-          <span class="cmp-who">
-            Plataforma completa nas duas lojas
-            <small>Proposta paralela da verttatech · 14 semanas · com pagamento integrado</small>
-          </span>
-          <span class="cmp-val">R$ 155.000</span>
-        </div>
-
-        <div class="cmp-row is-ours">
-          <span class="cmp-who">
-            Esta versão de validação
-            <small>8 semanas · uma loja · aplicativo único</small>
-          </span>
-          <span class="cmp-val">R$ 75.000</span>
-        </div>
-
-        <p class="cmp-note">
-          Metade do investimento para responder a pergunta que decide todo o resto. Se a praça
-          responder, a versão completa deixa de ser aposta e passa a ser consequência.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<main class="sheet" style="padding-top:clamp(52px,8vw,88px)">
-
-  <!-- ---------- 05 ---------- -->
-  <section class="sec">
-    <div class="sec-mark"><span class="sec-digit">05</span><div class="sec-rule"></div></div>
-    <div class="sec-body">
-      <h2>O que fica de fora, e por quê</h2>
-      <p>
-        Esta é a parte mais importante do documento. Nada aqui foi escondido para baratear o
-        preço — cada item saiu por uma razão, e cada um tem um custo para entrar depois.
-      </p>
-
-      <div class="tbl-wrap">
-        <table>
-          <thead>
-            <tr><th>Fica de fora</th><th>Consequência</th><th>Custo para incluir depois</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Pagamento dentro do app</td>
-              <td>Cliente e entregador combinam por fora. A plataforma não consegue reter
-                  comissão por frete nesta fase</td>
-              <td class="v">R$ 25.000</td>
-            </tr>
-            <tr>
-              <td>iPhone (iOS)</td>
-              <td>Quem tem iPhone fica de fora do teste. No Brasil, isso é minoria — mas
-                  concentrada no público de maior renda</td>
-              <td class="v">R$ 18.000</td>
-            </tr>
-            <tr>
-              <td>Rastreamento em tempo real</td>
-              <td>O cliente vê o status, não a posição no mapa. Menos conforto, mesma
-                  informação essencial</td>
-              <td class="v">R$ 14.000</td>
-            </tr>
-            <tr>
-              <td>Painel administrativo</td>
-              <td>Aprovar cadastro e resolver disputa passa a ser feito por nós, sob demanda,
-                  direto na base de dados</td>
-              <td class="v">R$ 12.000</td>
-            </tr>
-            <tr>
-              <td>Avaliação dupla e denúncia</td>
-              <td>O entregador não avalia o cliente. Sem ferramenta de moderação para
-                  comportamento inadequado</td>
-              <td class="v">R$ 7.000</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="aside">
-        <h3>O ponto que merece decisão consciente</h3>
-        <p>
-          Sem pagamento dentro do aplicativo, a plataforma não cobra comissão por frete nesta
-          fase — ela testa se as pessoas usam, não se o negócio fecha. Se a receita por comissão
-          é o coração do modelo, há duas saídas: cobrar mensalidade do entregador para ver os
-          fretes, o que é simples e já valida disposição a pagar; ou ir direto para a versão
-          completa. Vale decidir isso antes de assinar, não depois.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ---------- 06 ---------- -->
-  <section class="sec">
-    <div class="sec-mark"><span class="sec-digit">06</span><div class="sec-rule"></div></div>
-    <div class="sec-body">
-      <h2>De onde vem o valor</h2>
-
-      <div class="tbl-wrap">
-        <table>
-          <thead>
-            <tr><th>Bloco</th><th>O que inclui</th><th>Valor</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Desenho e arquitetura</td>
-              <td>Telas desenhadas e aprovadas, modelagem do banco e estrutura preparada para
-                  receber os blocos que ficaram de fora</td>
-              <td class="v">R$ 10.000</td>
-            </tr>
-            <tr>
-              <td>Servidor e cadastro</td>
-              <td>Infraestrutura, banco, armazenamento de fotos, backup e cadastro verificado
-                  dos dois perfis</td>
-              <td class="v">R$ 11.000</td>
-            </tr>
-            <tr>
-              <td>Motor de fretes</td>
-              <td>Pedido, aceite, cálculo de rota e memória de trajetos</td>
-              <td class="v">R$ 18.000</td>
-            </tr>
-            <tr>
-              <td>Aplicativo com dois perfis</td>
-              <td>Todas as telas de cliente e entregador em um único aplicativo, mapa e câmera</td>
-              <td class="v">R$ 25.000</td>
-            </tr>
-            <tr>
-              <td>Fotos, status e avisos</td>
-              <td>Registro fotográfico com data e local, mudança de etapa e notificação no
-                  celular</td>
-              <td class="v">R$ 7.000</td>
-            </tr>
-            <tr>
-              <td>Publicação e garantia</td>
-              <td>Envio ao Google Play, acompanhamento da análise e 30 dias de correção sem
-                  custo</td>
-              <td class="v">R$ 4.000</td>
-            </tr>
-            <tr class="total">
-              <td>Total</td>
-              <td>Versão de validação, Android</td>
-              <td class="v">R$ 75.000</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="pull">
-        A arquitetura é a mesma da versão completa. O que fica de fora foi deixado de fora, não
-        improvisado — por isso pode entrar depois sem refazer o que existe.
-      </p>
-    </div>
-  </section>
-
-  <!-- ---------- 07 ---------- -->
-  <section class="sec">
-    <div class="sec-mark"><span class="sec-digit">07</span><div class="sec-rule"></div></div>
-    <div class="sec-body">
-      <h2>Oito semanas até o primeiro frete real</h2>
-
-      <div class="timeline">
-        <div class="tl">
-          <span class="tl-week">Semanas 1–2</span>
-          <h3>Desenho</h3>
-          <p>Telas desenhadas e aprovadas, e a estrutura do banco definida.</p>
-        </div>
-        <div class="tl">
-          <span class="tl-week">Semanas 3–4</span>
-          <h3>Base e cadastro</h3>
-          <p>Servidor no ar, cadastro verificado e escolha de perfil funcionando.</p>
-        </div>
-        <div class="tl">
-          <span class="tl-week">Semanas 5–6</span>
-          <h3>Fretes</h3>
-          <p>Pedido, aceite, fotos e rota funcionando ponta a ponta.</p>
-        </div>
-        <div class="tl">
-          <span class="tl-week">Semanas 7–8</span>
-          <h3>Testes e loja</h3>
-          <p>Fretes de teste reais, correções e envio ao Google Play.</p>
-        </div>
-      </div>
-
-      <p>
-        A reunião de acompanhamento é semanal e sempre com o aplicativo na tela. A partir da
-        semana 4 você já consegue instalar a versão de teste no seu celular.
-      </p>
-    </div>
-  </section>
-
-  <!-- ---------- 08 ---------- -->
-  <section class="sec">
-    <div class="sec-mark"><span class="sec-digit">08</span><div class="sec-rule"></div></div>
-    <div class="sec-body">
-      <h2>Como saber se deu certo</h2>
-      <p>
-        Uma validação sem critério definido antes vira discussão de opinião depois. Sugerimos
-        acompanhar quatro números durante os primeiros 90 dias de operação:
-      </p>
-
-      <div class="next">
-        <div class="next-item">
-          <span class="sec-digit">01</span>
-          <p>Fretes publicados por semana, e quantos deles encontram entregador.</p>
-        </div>
-        <div class="next-item">
-          <span class="sec-digit">02</span>
-          <p>Entregadores que aceitam mais de um frete — indica que o ganho compensa.</p>
-        </div>
-        <div class="next-item">
-          <span class="sec-digit">03</span>
-          <p>Clientes que voltam a contratar depois do primeiro frete.</p>
-        </div>
-        <div class="next-item">
-          <span class="sec-digit">04</span>
-          <p>Ticket médio, para saber se a comissão futura sustenta a operação.</p>
-        </div>
-      </div>
-
-      <p>
-        Se esses números crescerem, a versão completa deixa de ser aposta. Se não crescerem,
-        você descobriu isso por R$ 75.000 em vez de R$ 155.000 — e essa também é uma resposta
-        que vale o investimento.
-      </p>
-    </div>
-  </section>
-
-  <!-- ---------- 09 ---------- -->
-  <section class="sec">
-    <div class="sec-mark"><span class="sec-digit">09</span><div class="sec-rule"></div></div>
-    <div class="sec-body">
-      <h2>O que não está no valor</h2>
-      <p>
-        Contratados diretamente por você, no seu nome, sem margem nossa embutida. Nós
-        configuramos tudo.
-      </p>
-
-      <div class="tbl-wrap">
-        <table>
-          <thead>
-            <tr><th>Custo</th><th>Por que existe</th><th>Ordem de grandeza</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Servidor e armazenamento</td>
-              <td>Onde a plataforma roda e onde as fotos ficam guardadas</td>
-              <td class="v">R$ 300 – 700 / mês</td>
-            </tr>
-            <tr>
-              <td>Mapas e rotas</td>
-              <td>Cobrado por consulta; a memória de rotas reduz o volume com o tempo</td>
-              <td class="v">R$ 100 – 600 / mês</td>
-            </tr>
-            <tr>
-              <td>Conta Google Play</td>
-              <td>Exigência para publicar em nome da sua empresa</td>
-              <td class="v">US$ 25 · uma vez</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p>
-        Também fora do escopo: termos de uso e política de privacidade por advogado, marketing
-        de lançamento e captação dos primeiros entregadores.
-      </p>
-
-      <div class="aside">
-        <h3>A plataforma é sua desde o primeiro dia</h3>
-        <p>
-          Código-fonte, servidor, conta da loja e dados ficam no nome da sua empresa. Se decidir
-          seguir para a versão completa com outra equipe, nada aqui impede — a estrutura foi
-          feita para crescer, não para prender.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ---------- 10 ---------- -->
-  <section class="sec">
-    <div class="sec-mark"><span class="sec-digit">10</span><div class="sec-rule"></div></div>
-    <div class="sec-body">
-      <h2>Próximos passos</h2>
-
-      <div class="next">
-        <div class="next-item">
-          <span class="sec-digit">01</span>
-          <p>Uma conversa para definir a praça inicial e o critério de sucesso.</p>
-        </div>
-        <div class="next-item">
-          <span class="sec-digit">02</span>
-          <p>Aceite desta proposta e assinatura do contrato.</p>
-        </div>
-        <div class="next-item">
-          <span class="sec-digit">03</span>
-          <p>Abertura das contas de servidor e Google Play no seu nome.</p>
-        </div>
-        <div class="next-item">
-          <span class="sec-digit">04</span>
-          <p>Início do desenho das telas, com demonstração semanal.</p>
-        </div>
-      </div>
-
-      <p>
-        Esta proposta é válida por 30 dias e existe ao lado da proposta da plataforma completa,
-        de R$ 155.000. Elas não competem entre si: uma responde se vale construir a outra.
-      </p>
-    </div>
-  </section>
-
-  <footer>
-    <div class="foot-brand">
-      <span class="foot-by">verttatech</span>
-      <span class="foot-word">FRETES</span>
-    </div>
-    <div class="foot-meta">
-      Proposta de validação · Agosto de 2026<br>
-      Válida por 30 dias a partir da emissão
-    </div>
-  </footer>
-
-</main>
-</div>
 
 <script>
   (function () {
     "use strict";
-    var docs = { completa: document.getElementById("doc-completa"),
-                 validacao: document.getElementById("doc-validacao") };
-    var tabs = { completa: document.getElementById("tab-completa"),
-                 validacao: document.getElementById("tab-validacao") };
-
-    function show(key) {
-      Object.keys(docs).forEach(function (k) {
-        var on = k === key;
-        docs[k].hidden = !on;
-        tabs[k].setAttribute("aria-selected", on ? "true" : "false");
-      });
-      if (location.hash.slice(1) !== key) {
-        history.replaceState(null, "", "#" + key);
-      }
-      window.scrollTo(0, 0);
-    }
-
-    Object.keys(tabs).forEach(function (k) {
-      tabs[k].addEventListener("click", function () { show(k); });
-    });
-
-    var initial = location.hash.slice(1);
-    show(docs[initial] ? initial : "completa");
-
     document.getElementById("themeBtn").addEventListener("click", function () {
       var root = document.documentElement;
       var cur = root.getAttribute("data-theme");
